@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.gmail.dudarenka.vitali.autocattesttask.presentation.screen.cars.add.CarAddViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+
+            <TextView
+                android:id="@+id/makeTextView"
+                android:layout_width="105dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="24dp"
+                android:text="@string/make"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/makeEditText" />
+
+            <TextView
+                android:id="@+id/modelTextView"
+                android:layout_width="105dp"
+                android:layout_height="22dp"
+                android:text="@string/model"
+                app:layout_constraintStart_toStartOf="@+id/makeTextView"
+                app:layout_constraintTop_toTopOf="@+id/modelEditText" />
+
+            <TextView
+                android:id="@+id/capacityTextView"
+                android:layout_width="105dp"
+                android:layout_height="22dp"
+                android:text="@string/capacity"
+                app:layout_constraintStart_toStartOf="@+id/modelTextView"
+                app:layout_constraintTop_toTopOf="@+id/capacityEditText" />
+
+            <TextView
+                android:id="@+id/yearTextView"
+                android:layout_width="105dp"
+                android:layout_height="22dp"
+                android:text="@string/year"
+                app:layout_constraintStart_toStartOf="@+id/capacityTextView"
+                app:layout_constraintTop_toTopOf="@+id/yearEditText" />
+
+            <TextView
+                android:id="@+id/gearboxTextView"
+                android:layout_width="105dp"
+                android:layout_height="22dp"
+                android:text="@string/gearBox"
+                app:layout_constraintStart_toStartOf="@+id/yearTextView"
+                app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+
+            <TextView
+                android:id="@+id/prcieTextView"
+                android:layout_width="105dp"
+                android:layout_height="22dp"
+                android:text="@string/price"
+                app:layout_constraintStart_toStartOf="@+id/gearboxTextView"
+                app:layout_constraintTop_toTopOf="@+id/priceEditText" />
+
+            <EditText
+                android:id="@+id/makeEditText"
+                android:layout_width="162dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="15dp"
+                android:text="@={viewModel.make}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/makeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <EditText
+                android:id="@+id/modelEditText"
+                android:layout_width="162dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@={viewModel.model}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/modelTextView"
+                app:layout_constraintTop_toBottomOf="@+id/makeEditText" />
+
+            <EditText
+                android:id="@+id/capacityEditText"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@={viewModel.capacity}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/capacityTextView"
+                app:layout_constraintTop_toBottomOf="@+id/modelEditText" />
+
+            <EditText
+                android:id="@+id/yearEditText"
+                android:layout_width="162dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@={viewModel.year}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/yearTextView"
+                app:layout_constraintTop_toBottomOf="@+id/capacityEditText" />
+
+            <EditText
+                android:id="@+id/priceEditText"
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="top"
+                android:text="@={viewModel.price}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/prcieTextView"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/save"
+                android:textSize="12sp"
+                android:onClick="@{() -> viewModel.onClickSave()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/priceEditText" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="110dp"
+                android:layout_height="103dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:imageUrl="@{viewModel.imgUrl}"/>
+
+            <EditText
+                android:id="@+id/urlEditText"
+                android:layout_width="159dp"
+                android:layout_height="97dp"
+                android:layout_marginStart="10dp"
+                android:gravity="top"
+                android:text="@={viewModel.imgUrl}"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintStart_toStartOf="@+id/yearEditText"
+                app:layout_constraintTop_toBottomOf="@+id/yearEditText">
+
+                <RadioButton
+                    android:id="@+id/akppRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.gearBoxAuto()}"
+                    android:text="@string/akpp" />
+
+                <RadioButton
+                    android:id="@+id/mkppRadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.gearBoxManual()}"
+                    android:text="@string/mkpp" />
+            </RadioGroup>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>

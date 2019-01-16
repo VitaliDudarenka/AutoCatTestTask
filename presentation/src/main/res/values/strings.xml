@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AutoCatTestTask</string>
+    <string name="make">Марка</string>
+    <string name="model">Модель</string>
+    <string name="capacity">Объем</string>
+    <string name="year">Год</string>
+    <string name="gearBox">КПП</string>
+    <string name="price">Цена</string>
+    <string name="save">Сохранить</string>
+    <string name="akpp">АКПП</string>
+    <string name="mkpp">МКПП</string>
+    <string name="fill_forms">Заполните все поля</string>
+    <string name="saved">Сохранено</string>
+</resources>
