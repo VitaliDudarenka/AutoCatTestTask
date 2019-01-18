@@ -40,5 +40,25 @@ class CarListViewModel : BaseViewModel<CarsRouter>() {
         router!!.goToCarAdding()
     }
 
+    fun onClickDownSort() {
+        adapter!!.sortPriceDown()
+    }
+
+    fun onClickUpSort() {
+        adapter!!.sortPriceUp()
+    }
+
+    fun search(search: String) {
+        if (isProgressEnabled.get()) return
+        val disposable = getCarsUseCase.get().subscribeBy(
+                onNext = {
+                    adapter!!.filter(search)
+                },
+                onError = {
+                    router?.showError(it)
+                }
+        )
+        addToDisposable(disposable)
+    }
 
 }

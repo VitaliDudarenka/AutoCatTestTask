@@ -8,6 +8,8 @@ import com.gmail.dudarenka.vitali.autocattesttask.R
 import com.gmail.dudarenka.vitali.autocattesttask.databinding.FragmentCarListBinding
 import com.gmail.dudarenka.vitali.autocattesttask.presentation.base.BaseMvvmFragment
 import com.gmail.dudarenka.vitali.autocattesttask.presentation.screen.cars.CarsRouter
+import com.jakewharton.rxbinding2.widget.RxTextView
+import io.reactivex.rxkotlin.subscribeBy
 
 
 class CarListFragment : BaseMvvmFragment<CarListViewModel, CarsRouter, FragmentCarListBinding>() {
@@ -31,6 +33,9 @@ class CarListFragment : BaseMvvmFragment<CarListViewModel, CarsRouter, FragmentC
         layoutManager = LinearLayoutManager(context)
         binding.listRecyclerView.layoutManager = layoutManager
         binding.listRecyclerView.setHasFixedSize(true)
-
+        RxTextView.textChanges(binding.searchEditText)
+                .subscribeBy {
+                    viewModel.search(it.toString())
+                }
     }
 }

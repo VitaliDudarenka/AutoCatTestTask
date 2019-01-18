@@ -26,8 +26,4 @@ class CarsRouter(activity: CarsActivity) : BaseRouter<CarsActivity>(activity) {
         Toast.makeText(activity, activity.getString(R.string.fill_forms), Toast.LENGTH_SHORT).show()
     }
 
-    fun showSaveComplete() {
-        Toast.makeText(activity, activity.getString(R.string.saved), Toast.LENGTH_SHORT).show()
-    }
-
 }

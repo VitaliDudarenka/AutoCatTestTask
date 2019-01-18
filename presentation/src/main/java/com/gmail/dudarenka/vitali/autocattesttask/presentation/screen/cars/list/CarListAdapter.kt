@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.gmail.dudarenka.vitali.autocattesttask.R
 import com.gmail.dudarenka.vitali.autocattesttask.domain.entity.Car
+import java.util.*
 
 
 class CarListAdapter : RecyclerView.Adapter<CarListAdapter.Holder>() {
@@ -71,6 +72,30 @@ class CarListAdapter : RecyclerView.Adapter<CarListAdapter.Holder>() {
 
     interface OnItemClickListener {
         fun onItemClick(car: Car)
+    }
+    fun filter(charText: String) {
+        var charText = charText
+        charText = charText.toLowerCase(Locale.getDefault())
+        listData!!.clear()
+        if (charText.isEmpty()) {
+            listData!!.addAll(this.carList!!)
+        } else {
+            for (car in this.carList!!) {
+                if ((car.make.toLowerCase(Locale.getDefault()) + " " + car.model.toLowerCase(Locale.getDefault())).contains(charText)) {
+                    listData!!.add(car)
+                }
+            }
+        }
+        notifyDataSetChanged()
+    }
+
+    fun sortPriceUp() {
+        listData!!.sortWith(Comparator { one, other -> one.price.toInt().compareTo(other.price.toInt()) })
+        notifyDataSetChanged()
+    }
+    fun sortPriceDown() {
+        listData!!.sortWith(Comparator { one, other -> other.price.toInt().compareTo(one.price.toInt()) })
+        notifyDataSetChanged()
     }
 
 }
